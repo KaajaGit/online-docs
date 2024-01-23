@@ -1,5 +1,5 @@
 output: .retype
-url: https://www.kaaja.com
+url: kaajagit.github.io/online-docs/
 
 branding:
   logo: ./static/logo.svg
