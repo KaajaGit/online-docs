@@ -1,0 +1,9 @@
+output: .retype
+url: https://www.kaaja.com
+
+branding:
+  logo: ./static/logo.svg
+  logoDark: ./static/logo-dark.svg
+
+footer:
+  copyright: "&copy; Copyright {{ year }}. All rights reserved."

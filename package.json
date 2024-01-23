@@ -1,0 +1,13 @@
+{
+  "name": "online-docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "retype start"
+  },
+  "author": "Renato Pozzi <renato.pozzi@kaaja.com>",
+  "license": "ISC",
+  "dependencies": {
+    "retype": "^0.2.0"
+  }
+}
