@@ -15,7 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: retypeapp/action-build@latest
-      - uses: retypeapp/action-github-pages@latest
         with:
           branch: "online-site"
           update-branch: true
