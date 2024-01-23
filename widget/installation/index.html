@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/online-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759340814961">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759341791777">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -15,27 +15,28 @@
     <meta name="description" content="This document will guide you through the installation and configuration of the Kaaja Widget.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://kaajagit.github.io/online-docs/widget/installation-os/">
+    <link rel="canonical" href="https://kaajagit.github.io/online-docs/widget/installation/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kaajagit.github.io/online-docs/widget/installation-os/">
+    <meta property="og:url" content="https://kaajagit.github.io/online-docs/widget/installation/">
     <meta property="og:title" content="Widget Installation Guide">
     <meta property="og:description" content="This document will guide you through the installation and configuration of the Kaaja Widget.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://kaajagit.github.io/online-docs/widget/installation-os/">
+    <meta property="twitter:url" content="https://kaajagit.github.io/online-docs/widget/installation/">
     <meta property="twitter:title" content="Widget Installation Guide">
     <meta property="twitter:description" content="This document will guide you through the installation and configuration of the Kaaja Widget.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.759340814961" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.759341791777" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759340814961" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759341791777" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759340814961" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759341791777" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.759341791777" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -161,6 +162,183 @@
 </doc-anchor-target>
 <p>This document will guide you through the installation and configuration of the
 Kaaja Widget.</p>
+<doc-anchor-target id="installation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#installation">#</doc-anchor-trigger>
+        <span>Installation</span>
+    </h2>
+</doc-anchor-target>
+<p>The Widget is integrated through an HTML <code v-pre>iframe</code>, a tag that incorporates
+elements external to your web page you are working on, and a URL formatted using
+a standard Kaaja methodology.</p>
+<doc-anchor-target id="test--production-environments">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#test--production-environments">#</doc-anchor-trigger>
+        <span>Test / Production Environments</span>
+    </h3>
+</doc-anchor-target>
+<p>In Kaaja there are two distinct environments, one for testing and another for
+production, respectively served at the following URLs:</p>
+<ol>
+<li><a href="https://www.kaajab.com/">https://www.kaajab.com/</a> (Test Environment)</li>
+<li><a href="https://www.kaaja.com/">https://www.kaaja.com/</a> (Production Environment)</li>
+</ol>
+<doc-anchor-target id="how-to-embed-an-iframe">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-to-embed-an-iframe">#</doc-anchor-trigger>
+        <span>How to Embed an iFrame</span>
+    </h3>
+</doc-anchor-target>
+<p>In order to embed correctly, it is necessary to structure a URL in such a way
+that Kaaja can interpret it and provide the correct information.</p>
+<p>The path to the widget is found under: <code v-pre>/mate</code>.</p>
+<p>The parameters required by a URL are as follows:</p>
+<ul>
+<li><code v-pre>id</code> which represents the code of a Kaaja property (aligned with BNL unique
+reference code).</li>
+<li><code v-pre>apiKey</code> which is provided by the Kaaja team and identifies who is making the
+calls.</li>
+</ul>
+<p>There is inolte another, optional parameter:</p>
+<ul>
+<li><code v-pre>data</code> an encrypted, url-safe string used to pre-populate some form fields
+with customer data.</li>
+</ul>
+<p>A URL formatted solely as an example might be:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">https://www.kaajab.com/mate?data=U2FsdGVkX1%2Bp753VI83n&amp;id=PRE-SC-LU-51&amp;apiKey=7fh802d10c9a3552ba45db30eb3f68f1</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="cyphered-form-data">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cyphered-form-data">#</doc-anchor-trigger>
+        <span>Cyphered Form Data</span>
+    </h2>
+</doc-anchor-target>
+<p>As can be seen from the installation section, the <code v-pre>data</code> parameter is an
+encrypted, url-safe string containing the data that will pre-populate some
+fields of the form with customer data.</p>
+<p>### How To Encrypt the User Data</p>
+<p>The process of creating, encoding and sanitizing the string is done by following
+the following steps (illustrated using JavaScript):</p>
+<ol>
+<li>Perform the <code v-pre>JSON.stringify</code> of the object containing the data.</li>
+<li>Perform encryption of the result using AES-256 as the algorithm, and the
+SECRET KEY provided securely by Kaaja.</li>
+<li>Perform the <code v-pre>encodeURIComponent</code> of the result so that the encrypted string
+is usable in URLs.</li>
+</ol>
+<p>Below is an example of the code used to perform the procedure:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">import CryptoJS from &quot;crypto-js&quot;;
+
+const AES_SECRET_KEY = &quot;SECRET&quot;;
+
+export function createEncryptedQs(data) {
+  return encodeURIComponent(
+    CryptoJS.AES.encrypt(JSON.stringify(data), AES_SECRET_KEY).toString()
+  );
+}
+
+// Call the function
+const result = createEncryptedQs({
+  firstName: &quot;Mario&quot;,
+  lastName: &quot;Rossi&quot;,
+  email: &quot;mario.rossi@example.com&quot;,
+  zip_code: &quot;23058&quot;,
+  prefix: &quot;+39&quot;,
+  mobile: &quot;3331334449&quot;,
+  address: &quot;Via del Dollaro 12&quot;,
+  city: &quot;Milano&quot;,
+  province: &quot;Milano&quot;,
+  country: &quot;Italia&quot;,
+  tax_code: &quot;PSLMRC94T13B428V&quot;,
+});</code></pre>
+</doc-codeblock></div>
+<blockquote>
+<p>Please note: The algorithm used for encryption is AES-256.</p>
+</blockquote>
+<doc-anchor-target id="customizations">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#customizations">#</doc-anchor-trigger>
+        <span>Customizations</span>
+    </h2>
+</doc-anchor-target>
+<p>Depending on your needs, you can set the size of the iframe to fit in different
+contexts.</p>
+<p>The widget is responsive and works accordingly on both desktop and mobile
+devices, the average CSS query representing the breakpoint for the interface
+change is as follows:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-css"><code v-pre class="language-css">@media (min-width: 640px) {
+  /* CSS Here */
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="working-example">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#working-example">#</doc-anchor-trigger>
+        <span>Working Example</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Widget Environment&lt;/title&gt;
+
+    &lt;!-- Dummy stylings for the sake of the example --&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+      body {
+        margin: 0;
+      }
+
+      .container {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .frame {
+        border: 1px solid #cccccc;
+        border-radius: 16px;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;!-- Height and Width are customizable --&gt;
+      &lt;iframe width=&quot;400&quot; height=&quot;600&quot; id=&quot;frame&quot; class=&quot;frame&quot;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+      // This must to be done at server-side in real environments.
+      // const data = createEncryptedQs(...dataFromQs)
+
+      const urlQs = new URLSearchParams([
+        [&quot;id&quot;, &quot;H2P-MI-25-1&quot;],
+        [&quot;apiKey&quot;, &quot;vg3184d00c9a8217ba45db30eb3f99w1&quot;], // Not the real API Key.
+        // ['data', data] // This is optional, for automatic form fulfill.
+      ]);
+
+      const siteWidgetUrl = `https://www.kaajab.com/meta?${urlQs.toString()}`;
+
+      window.addEventListener(&quot;load&quot;, (event) =&gt; {
+        const frame = document
+          .getElementById(&quot;frame&quot;)
+          .setAttribute(&quot;src&quot;, siteWidgetUrl);
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</doc-codeblock></div>
+<p>### Encryption Sandbox</p>
+<p>In order to create the data object as requested and test it, you can play with
+the following CodeSandbox, which contains the source code useful for carrying
+out the process.</p>
+<p>Please <strong>DO NOT</strong> use sensitive data within the Sandbox as it is in the public
+domain online.</p>
+<p>Link to the Sandbox: [Insert Link]</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -220,6 +398,6 @@ Kaaja Widget.</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Installation Guide", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Installation Guide", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
