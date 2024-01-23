@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "retype start"
+    "dev": "retype start",
+    "prepare": "is-ci || husky install"
   },
   "author": "Renato Pozzi <renato.pozzi@kaaja.com>",
   "license": "ISC",
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.5.0",
     "@commitlint/config-conventional": "^18.5.0",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1"
   }
 }
