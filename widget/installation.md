@@ -175,4 +175,6 @@ out the process.
 Please **DO NOT** use sensitive data within the Sandbox as it is in the public
 domain online.
 
-Link to the Sandbox: [Insert Link]
+Link to the Sandbox: https://codesandbox.io/p/devbox/lhmg93
+
+[!embed](https://codesandbox.io/p/devbox/lhmg93?file=%2Fsrc%2Findex.ts)
