@@ -67,18 +67,9 @@ the following steps (illustrated using JavaScript):
 Below is an example of the code used to perform the procedure:
 
 ```js
-import CryptoJS from "crypto-js";
+import { createCipheriv, createDecipheriv, createHash } from "crypto";
 
-const AES_SECRET_KEY = "SECRET";
-
-export function createEncryptedQs(data) {
-  return encodeURIComponent(
-    CryptoJS.AES.encrypt(JSON.stringify(data), AES_SECRET_KEY).toString()
-  );
-}
-
-// Call the function
-const result = createEncryptedQs({
+const data = JSON.stringify({
   firstName: "Mario",
   lastName: "Rossi",
   email: "mario.rossi@example.com",
@@ -91,9 +82,35 @@ const result = createEncryptedQs({
   country: "Italia",
   tax_code: "PSLMRC94T13B428V",
 });
+
+const AES_SECRET_KEY = "SECRET";
+
+const secret = createHash("sha512")
+  .update(AES_SECRET_KEY)
+  .digest("hex")
+  .substring(0, 32);
+const iv = Buffer.from(secret).toString("hex").substring(0, 16);
+
+// Encryption
+const cipher = createCipheriv("aes-256-cbc", secret, iv);
+const encrypted = Buffer.from(
+  cipher.update(data, "utf8", "hex") + cipher.final("hex")
+).toString("base64");
+const encoded = encodeURIComponent(encrypted);
+
+// Decryption
+const decoded = decodeURIComponent(encoded);
+const buff = Buffer.from(decoded, "base64");
+const decipher = createDecipheriv("aes-256-cbc", secret, iv);
+const decrypted =
+  decipher.update(buff.toString("utf8"), "hex", "utf8") +
+  decipher.final("utf8");
+
+console.log("Encrypted Data:", encoded);
+console.log("Decrypted Data:", decrypted);
 ```
 
-> Please note: The algorithm used for encryption is AES-256.
+> Please note: The algorithm used for encryption is AES-256-CBC.
 
 ## Customizations
 
