@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/online-docs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759504344077">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.762013796476">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,12 +31,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.759504344077" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.762013796476" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759504344077" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.762013796476" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759504344077" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.759504344077" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.762013796476" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.762013796476" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -229,18 +229,9 @@ is usable in URLs.</li>
 </ol>
 <p>Below is an example of the code used to perform the procedure:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">import CryptoJS from &quot;crypto-js&quot;;
+<pre class="language-javascript"><code v-pre class="language-javascript">import { createCipheriv, createDecipheriv, createHash } from &quot;crypto&quot;;
 
-const AES_SECRET_KEY = &quot;SECRET&quot;;
-
-export function createEncryptedQs(data) {
-  return encodeURIComponent(
-    CryptoJS.AES.encrypt(JSON.stringify(data), AES_SECRET_KEY).toString()
-  );
-}
-
-// Call the function
-const result = createEncryptedQs({
+const data = JSON.stringify({
   firstName: &quot;Mario&quot;,
   lastName: &quot;Rossi&quot;,
   email: &quot;mario.rossi@example.com&quot;,
@@ -252,10 +243,36 @@ const result = createEncryptedQs({
   province: &quot;Milano&quot;,
   country: &quot;Italia&quot;,
   tax_code: &quot;PSLMRC94T13B428V&quot;,
-});</code></pre>
+});
+
+const AES_SECRET_KEY = &quot;SECRET&quot;;
+
+const secret = createHash(&quot;sha512&quot;)
+  .update(AES_SECRET_KEY)
+  .digest(&quot;hex&quot;)
+  .substring(0, 32);
+const iv = Buffer.from(secret).toString(&quot;hex&quot;).substring(0, 16);
+
+// Encryption
+const cipher = createCipheriv(&quot;aes-256-cbc&quot;, secret, iv);
+const encrypted = Buffer.from(
+  cipher.update(data, &quot;utf8&quot;, &quot;hex&quot;) + cipher.final(&quot;hex&quot;)
+).toString(&quot;base64&quot;);
+const encoded = encodeURIComponent(encrypted);
+
+// Decryption
+const decoded = decodeURIComponent(encoded);
+const buff = Buffer.from(decoded, &quot;base64&quot;);
+const decipher = createDecipheriv(&quot;aes-256-cbc&quot;, secret, iv);
+const decrypted =
+  decipher.update(buff.toString(&quot;utf8&quot;), &quot;hex&quot;, &quot;utf8&quot;) +
+  decipher.final(&quot;utf8&quot;);
+
+console.log(&quot;Encrypted Data:&quot;, encoded);
+console.log(&quot;Decrypted Data:&quot;, decrypted);</code></pre>
 </doc-codeblock></div>
 <blockquote>
-<p>Please note: The algorithm used for encryption is AES-256.</p>
+<p>Please note: The algorithm used for encryption is AES-256-CBC.</p>
 </blockquote>
 <doc-anchor-target id="customizations">
     <h2>
