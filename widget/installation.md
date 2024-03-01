@@ -171,7 +171,7 @@ change is as follows:
         // ['data', data] // This is optional, for automatic form fulfill.
       ]);
 
-      const siteWidgetUrl = `https://www.kaajab.com/meta?${urlQs.toString()}`;
+      const siteWidgetUrl = `https://www.kaajab.com/mate?${urlQs.toString()}`;
 
       window.addEventListener("load", (event) => {
         const frame = document
@@ -183,7 +183,7 @@ change is as follows:
 </html>
 ```
 
-### Encryption Sandbox
+### Encryption Sandbox
 
 In order to create the data object as requested and test it, you can play with
 the following CodeSandbox, which contains the source code useful for carrying
@@ -192,6 +192,6 @@ out the process.
 Please **DO NOT** use sensitive data within the Sandbox as it is in the public
 domain online.
 
-Link to the Sandbox: https://codesandbox.io/p/devbox/lhmg93
+Link to the Sandbox: https://stackblitz.com/edit/remix-run-remix-npzgho
 
-[!embed](https://codesandbox.io/p/devbox/lhmg93?file=%2Fsrc%2Findex.ts)
+[!embed](https://stackblitz.com/edit/remix-run-remix-npzgho?embed=1&file=app%2Froutes%2F_index.tsx)
