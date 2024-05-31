@@ -197,6 +197,6 @@ out the process.
 Please **DO NOT** use sensitive data within the Sandbox as it is in the public
 domain online.
 
-Link to the Sandbox: https://stackblitz.com/edit/remix-run-remix-npzgho
+Link to the Sandbox: https://stackblitz.com/edit/remix-run-remix-3m947d?file=app%2Froutes%2F_index.tsx
 
 [!embed](https://stackblitz.com/edit/remix-run-remix-3m947d?file=app%2Froutes%2F_index.tsx)
