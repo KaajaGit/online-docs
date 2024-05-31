@@ -88,7 +88,7 @@ const data = JSON.stringify({
   }
 });
 
-const AES_SECRET_KEY = "SECRET";
+const AES_SECRET_KEY = 'tZxfQYCdMcwNXrJvaOnB1vjg4fbQMv';
 
 const secret = createHash("sha512")
   .update(AES_SECRET_KEY)
