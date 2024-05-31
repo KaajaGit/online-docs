@@ -36,7 +36,7 @@ The parameters required by a URL are as follows:
 - `apiKey` which is provided by the Kaaja team and identifies who is making the
   calls.
 
-There is inolte another, optional parameter:
+There is another, optional parameter:
 
 - `data` an encrypted, url-safe string used to pre-populate some form fields
   with customer data.
