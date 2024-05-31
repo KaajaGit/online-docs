@@ -81,6 +81,11 @@ const data = JSON.stringify({
   province: "Milano",
   country: "Italia",
   tax_code: "PSLMRC94T13B428V",
+  offer: {
+    amount: 121212,
+    id: "ABCDEFG",
+    note: "OPTIONAL"
+  }
 });
 
 const AES_SECRET_KEY = "SECRET";
@@ -194,4 +199,4 @@ domain online.
 
 Link to the Sandbox: https://stackblitz.com/edit/remix-run-remix-npzgho
 
-[!embed](https://stackblitz.com/edit/remix-run-remix-npzgho?embed=1&file=app%2Froutes%2F_index.tsx)
+[!embed](https://stackblitz.com/edit/remix-run-remix-3m947d?file=app%2Froutes%2F_index.tsx)
